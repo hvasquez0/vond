@@ -1,0 +1,4 @@
+<%= form_with model: @project do |f| %>
+        <div> name: <%= f.string_area :caption, required: true %> </div>
+    <%= f.submit %>
+<% end %>    

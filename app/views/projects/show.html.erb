@@ -1,0 +1,5 @@
+<H1> These are all the current available Projects <H1>
+<% @projects.each do |project| %>
+    <p> <%= project.caption %> </p>
+    <p><%= link_to project.user.email, project.user %></p>
+<% end %>
