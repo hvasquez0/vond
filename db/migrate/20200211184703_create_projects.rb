@@ -3,8 +3,8 @@ class CreateProjects < ActiveRecord::Migration[6.0]
     create_table :projects do |t|
 
     t.string 	:name
-    t.integer 	:time_begin
-    t.integer 	:time_end
+    t.date 	:time_begin
+    t.date 	:time_end
     t.text		:proffesion_needed
     t.text		:description
     t.integer	:creator_user_id
