@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-	def show
+	def index
         @projects = Project.all
     end
     
@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
     def destroy
         project =Project.find(params[:id])
       
-        if current_user == Project.user
+        if current_user == project.creator_user
             project.destroy
             redirect_to "/projects"
             flash[:notice] = "project destroyed"
@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
     
     def edit
         @project = Project.find(params[:id])
-        if current_user != @project.user
+        if current_user != @project.creator_user
         redirect_back(fallback_location: root_path)
         flash[:alert] = "Not autorized to edit project"
         end
@@ -47,10 +47,10 @@ class ProjectsController < ApplicationController
     
     def update
         project = Project.find(params[:id])
-        if current_user == project.user
+        if current_user == project.creator_user
             project.update(update_params)
             redirect_to project
-            flash[:notice] = "project updated"
+            flash[:notice] = "Project updated"
         else    
             redirect_back(fallback_location: root_path)
             flash[:alert] = "Not autorized to edit project"
@@ -61,9 +61,9 @@ class ProjectsController < ApplicationController
     
     private
     def project_params
-        params.require(:project).permit(:caption,:pic)
+        params.require(:project).permit(:name,:time_begin,:time_end,:proffesion_needed,:description,:available_spots)
     end
     def update_params
-        params.require(:project).permit(:caption)
+        params.require(:project).permit(:name,:time_begin,:time_end,:proffesion_needed,:description,:available_spotsption)
     end
 end

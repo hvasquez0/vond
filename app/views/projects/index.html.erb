@@ -1,5 +1,24 @@
-<H1> These are all the current available Projects <H1>
-<% @projects.each do |project| %>
-    <p> <%= project.caption %> </p>
-    <p><%= link_to project.user.email, project.user %></p>
-<% end %>
+<h1 class = "text-center"> These are all the current available Projects </h1>
+<div class = "container">  
+  <div class = "row">   	  
+	<% @projects.each do |project| %>
+		<div class = "col-4"> </div>
+		<div class = "col-4">
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title">Project name: <%= project.name %></h5>
+			    <p class="card-text">
+			    	Start date:<%= project.time_begin %>	
+			    	Due date:<%= project.time_end %>
+			     	Spots available:<%= project.available_spots %>
+			     	<%= link_to "Created by #{project.creator_user.username}", "/users/#{project.creator_user_id}", method: :get %> 
+			    		    
+			 			 		<%= button_to "Show details", "/projects/#{project.id}", method: :get %> 
+			    </p>
+			  </div>
+			</div>
+		</div>
+		<div class = "col-4"> </div>
+	<% end %>
+	</div>
+</div>

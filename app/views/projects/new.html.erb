@@ -1,4 +1,20 @@
-<%= form_with model: @project do |f| %>
-        <div> name: <%= f.string_area :caption, required: true %> </div>
-    <%= f.submit %>
-<% end %>    
+<h1 class = "text-center">Create a new project</h1>
+
+<div class = "container">  
+  <div class = "row"> 
+  	<div class = "col-2"> </div>
+  		<div class = "col-4">imagen </div>
+
+		<%= form_with model: @project do |f| %>
+       
+		<p><h6> Name of project:<%= f.text_field 						:name, required: true %></h6>
+		     <h6> What is the start date: <%= f.date_field 				:time_begin, required: true %></h6>
+		     <h6> When is it's due date:<%= f.date_field 				:time_end, required: true %></h6>
+		     <h6> What team mates are you looking for:<%= f.text_field  :proffesion_needed, required: true %></h6>
+		     <h6> How many spots are available:<%= f.text_field 		:available_spots, required: true %></h6>
+		     <h6> Describe what you are hoping to accomplish: <%= f.text_area	:description, required: true %></h6></p>
+		      <p><%= f.submit %></p>
+		<% end %> 
+		<div class = "col-2"> </div>
+	</div>	   
+</div>

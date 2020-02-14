@@ -8,22 +8,27 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-   <div class="field">
+ <div class="field">
     <%= f.label :username %><br />
-    <%= f.email_field :username %>
+    <%= f.text_field :username %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <div class="field">
+    <%= f.label :First_name %><br />
+    <%= f.text_field :username %>
+  </div>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
@@ -32,9 +37,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+    <%= f.label :phone %><br />
+    <%= f.text_field :username %>
 
   <div class="actions">
     <%= f.submit "Update" %>

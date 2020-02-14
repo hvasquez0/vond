@@ -1,4 +1,4 @@
-class Project < ApplicationRecord
-	has_many :users
-	has_many :projects
+class GroupMember < ApplicationRecord
+	belongs_to :user
+	belongs_to :project
 end	

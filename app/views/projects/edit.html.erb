@@ -1,8 +1,18 @@
-<%= form_with model: @project do |f| %>
-  
-<!--     <div><%= image_tag(@post.pic, class: "my-pic")  %> </div> 
-    <div> caption: <%= f.text_area :caption, required: true %> </div>
-    <%= f.submit %>
-    <% end %>      
-     -->
-<%end%> 
+<h1 class = "text-center">Edit your project</h1>
+
+<div class = "container">  
+  <div class = "row"> 
+  	<div class = "col-2"> </div>
+  		<div class = "col-4">imagen </div>
+			<%= form_with model: @project do |f| %>
+				<p><h6> Name of project:<%= f.text_field 						:name, required: true %></h6>
+			     <h6> What is the start date: <%= f.date_field 				:time_begin, required: true %></h6>
+			     <h6> When is it's due date:<%= f.date_field 				:time_end, required: true %></h6>
+			     <h6> What team mates are you looking for:<%= f.text_field  :proffesion_needed, required: true %></h6>
+			     <h6> How many spots are available:<%= f.text_field 		:available_spots, required: true %></h6>
+			     <h6> Describe what you are hoping to accomplish: <%= f.text_area	:description, required: true %></h6> 
+				</p>
+			    <div><%= f.submit %></div>
+			<%end%> 
+	</div>			
+</div>

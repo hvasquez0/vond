@@ -1,5 +1,46 @@
-<H1> These are all the current available Projects <H1>
-<% @projects.each do |project| %>
-    <p> <%= project.caption %> </p>
-    <p><%= link_to project.user.email, project.user %></p>
-<% end %>
+
+<h1 class = "text-center" > Project name: <%= @project.name %> </h1>
+
+
+<div class = "container">  
+  <div class = "row"> 
+  	<div class = "col-2"> </div>
+  		<div class = "col-4">imagen </div>
+
+  			<div class = "col-4"> 
+				<p>	
+			    	<h6> What is the start date:				<%= @project.time_begin %></h6>	
+			    	<h6> When is its due date:					<%= @project.time_end %></h6>
+			    	<h6> What team mates are you looking for:	<%= @project.proffesion_needed %></h6>
+			    	<h6> How many spots are available:			<%= @project.available_spots %></h6>
+			    	<h6> Description:							<%= @project.description %></h6>
+			    	<h6> <%= link_to "Created by #{@project.creator_user.username}", "/users/#{@project.creator_user_id}",method: :get %><h6>	
+			    </p>
+			   
+				
+
+					<%if current_user == @project.users %>	
+						<h6> You have already signed in <%= link_to "/projects/"%><h6>
+					<% else %>
+						<h6> <%= button_to "Join project", "/projects/#{@project.id}/group_members/",method: :post %>
+					<% end%>
+				
+					<% if current_user == @project.creator_user %>
+					    <%= button_to "Delete", @project, method: :delete  %>
+					    <%= button_to "Edit", "/projects/#{@project.id}/edit", method: :get %>
+					<%end%> 
+
+					<div>
+						<h6>People currently in the project.
+							<% @project.users.each do |user| %>
+							<%= user.username%>
+							<% end%>
+						</h6>
+					</div>
+
+				</div>
+
+					<div class = "col-2"> </div>
+	</div>
+	
+</div>
